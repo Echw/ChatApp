@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
 import OneMessageOnList from './OneMessageOnList';
 
 const MessageList = () => {
   return (
     <Wrapper>
       <SearchWrapper>
-        <input type="text" placeholder="Search" />
+        <SearchBarContainer>
+          <SearchIcon />
+          <input type="text" placeholder="Search" />
+        </SearchBarContainer>
+
         <button>
           <AiOutlinePlus />
         </button>
@@ -30,18 +34,20 @@ const Wrapper = styled.div`
   align-items: center;
   background-color: #294245;
 `;
+
 const SearchWrapper = styled.div`
   padding: 2rem 1rem;
   display: flex;
   gap: 1rem;
   align-items: center;
+
   input {
     height: 3rem;
     width: 14rem;
     border-radius: 5rem;
-    padding-left: 1rem;
-    font-weight: 600;
-    font-size: 1rem;
+    padding-left: 3rem;
+    font-weight: 300;
+    font-size: 1.5rem;
     background-color: #1f2b2c;
     border: none;
     color: white;
@@ -50,6 +56,7 @@ const SearchWrapper = styled.div`
       color: white;
     }
   }
+
   button {
     width: 3rem;
     height: 3rem;
@@ -59,6 +66,9 @@ const SearchWrapper = styled.div`
     border-radius: 50%;
     font-size: 1.5rem;
     color: #828282;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     :hover {
       cursor: pointer;
@@ -70,4 +80,16 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
+
+const SearchBarContainer = styled.div`
+  position: relative;
+`;
+
+const SearchIcon = styled(AiOutlineSearch)`
+  position: absolute;
+  color: #828282;
+  top: 0.7rem;
+  left: 1rem;
+  font-size: 1.5rem;
 `;

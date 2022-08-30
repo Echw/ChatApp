@@ -13,21 +13,22 @@ const Sidebar = () => {
       <ProfileImgWrapper>
         <ActivityIcon />
         <Img src={userIcon} />
+        <SidebarIcons>
+          <button>
+            <BsChatDotsFill />
+          </button>
+          <button>
+            <FaUserAlt />
+          </button>
+          <button>
+            <FaUserFriends />
+          </button>
+          <button>
+            <BsFillGearFill />
+          </button>
+        </SidebarIcons>
       </ProfileImgWrapper>
-      <SidebarIcons>
-        <button>
-          <BsChatDotsFill />
-        </button>
-        <button>
-          <FaUserAlt />
-        </button>
-        <button>
-          <FaUserFriends />
-        </button>
-        <button>
-          <BsFillGearFill />
-        </button>
-      </SidebarIcons>
+
       <button>
         <RiLogoutBoxRFill />
       </button>
@@ -39,7 +40,7 @@ export default Sidebar;
 
 const Wrapper = styled.div`
   height: 100vh;
-  width: 6rem;
+  width: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,11 +72,16 @@ const Img = styled.img`
 `;
 const ProfileImgWrapper = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 const ActivityIcon = styled.div`
   position: absolute;
-  bottom: 0;
-  right: 0.5rem;
+  top: 3.3rem;
+  right: 1.5rem;
   border: 0.1rem solid white;
   background-color: #00ff00;
   width: 0.8rem;
@@ -88,4 +94,5 @@ const SidebarIcons = styled.div`
   align-items: center;
   gap: 2rem;
   width: 100%;
+  padding-top: 4rem;
 `;
