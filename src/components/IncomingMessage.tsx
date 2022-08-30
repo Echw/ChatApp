@@ -2,23 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import userIcon from './user.png';
 
-const Message = () => {
+const IncomingMessage = () => {
   return (
     <Wrapper>
       <img src={userIcon} alt="" />
-      <ChatBubble>
-        <span>
-          Culpa doloremque enim commodi velit at dolore dolor praesentium
-          doloribus quod explicabo modi deserunt temporibus corrupti, sed,
-          dolorum quas. Repudiandae, veritatis labore.
-        </span>
-        <div></div>
-      </ChatBubble>
+      <BubbleWrapper>
+        <ChatBubble>
+          <span>
+            Culpa doloremque enim commodi velit at dolore dolor praesentium
+            doloribus quod explicabo modi
+          </span>
+          <div></div>
+        </ChatBubble>
+        <TimeWrapper>
+          <span>06-06</span>
+          <span>14:15 PM</span>
+        </TimeWrapper>
+      </BubbleWrapper>
     </Wrapper>
   );
 };
 
-export default Message;
+export default IncomingMessage;
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,6 +37,20 @@ const Wrapper = styled.div`
     background-color: #a9a9a9;
     object-fit: cover;
   }
+`;
+
+const BubbleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const TimeWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: #a9a9a9;
+  padding-top: 0.5rem;
 `;
 
 const ChatBubble = styled.div`
@@ -55,7 +74,8 @@ const ChatBubble = styled.div`
 
   span {
     color: #828282;
-    font-size: 1.5rem;
+    font-size: 1rem;
     z-index: 100;
+    line-height: 1.75rem;
   }
 `;
