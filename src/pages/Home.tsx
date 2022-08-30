@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import ChatSection from '../components/ChatSection';
 import Sidebar from '../components/Sidebar';
-import MessageList from './../components/MessageList';
+import MessageList from './MessageList';
+import StartNewChatSection from './StartNewChatSection';
 
 const Home = () => {
   return (
     <Wrapper>
       <Sidebar></Sidebar>
       <MessageList />
-      <ChatSection />
+      <StartNewChatSection></StartNewChatSection>
+      {/* <ChatSection /> */}
     </Wrapper>
   );
 };

@@ -58,7 +58,7 @@ const InfoWrapper = styled.div`
   }
 `;
 const MessagesNumber = styled.div`
-  background-color: #17ca17;
+  background-color: #5ebe5e;
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
