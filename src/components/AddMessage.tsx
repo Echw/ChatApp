@@ -25,10 +25,9 @@ const NewMessageSection = styled.div`
   background-color: white;
   padding: 1rem;
   z-index: 1000;
-  width: 100%;
 
   button {
-    font-size: 3rem;
+    font-size: 2rem;
     background-color: transparent;
     border: none;
     color: #c2c2c2;
@@ -41,7 +40,7 @@ const NewMessageSection = styled.div`
     padding: 0 2rem;
     width: 100%;
     height: 4rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
     background-color: transparent;
     border: none;
     color: #828282;

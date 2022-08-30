@@ -32,6 +32,8 @@ export default ChatSection;
 const Wrapper = styled.div`
   background-color: #dde0e0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 const NameSection = styled.div`
   display: flex;
@@ -68,7 +70,7 @@ const ActivitiIcon = styled.div`
 `;
 
 const MessagesSection = styled.div`
-  height: 75.6vh;
   overflow: hidden;
   overflow-y: scroll;
+  flex: 1 0 0;
 `;

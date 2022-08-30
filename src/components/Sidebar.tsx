@@ -6,6 +6,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { FaUserFriends } from 'react-icons/fa';
 import { RiLogoutBoxRFill } from 'react-icons/ri';
 import userIcon from './user.png';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
@@ -14,24 +15,21 @@ const Sidebar = () => {
         <ActivityIcon />
         <Img src={userIcon} />
         <SidebarIcons>
-          <button>
+          <StyledLink to="/messageList">
             <BsChatDotsFill />
-          </button>
-          <button>
-            <FaUserAlt />
-          </button>
-          <button>
+          </StyledLink>
+          <StyledLink to="/friendsList">
             <FaUserFriends />
-          </button>
-          <button>
+          </StyledLink>
+          <StyledLink to="/">
             <BsFillGearFill />
-          </button>
+          </StyledLink>
         </SidebarIcons>
       </ProfileImgWrapper>
 
-      <button>
+      <StyledLink to="/messageList">
         <RiLogoutBoxRFill />
-      </button>
+      </StyledLink>
     </Wrapper>
   );
 };
@@ -40,25 +38,29 @@ export default Sidebar;
 
 const Wrapper = styled.div`
   height: 100vh;
-  width: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   background-color: #1f2b2c;
-  button {
-    background: transparent;
-    border: 0.3rem solid transparent;
-    font-size: 2rem;
-    color: #828282;
-    width: 100%;
+`;
 
-    :hover {
-      color: white;
-      cursor: pointer;
-      border-left: 0.3rem solid #0098a5;
-      background-color: #294245;
-    }
+const StyledLink = styled(Link)`
+  background: transparent;
+  border-left: 0.3rem solid transparent;
+  padding: 0.5rem 0;
+  font-size: 2rem;
+  color: #828282;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    color: white;
+    cursor: pointer;
+    border-left: 0.3rem solid #0098a5;
+    background-color: #294245;
   }
 `;
 
@@ -94,5 +96,6 @@ const SidebarIcons = styled.div`
   align-items: center;
   gap: 2rem;
   width: 100%;
+  padding: 0 2rem;
   padding-top: 4rem;
 `;

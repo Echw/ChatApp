@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
-import OneMessageOnList from '../components/OneMessageOnList';
 import Layout from '../components/Layout';
-import ChatSection from './ChatSection';
 import { Link } from 'react-router-dom';
+import OneFriendOnList from '../components/OneFriendOnList';
+import FriendProfile from '../components/FriendProfile';
 
-const MessageList = () => {
+const FriendsList = () => {
   return (
     <Layout>
       <Wrapper>
@@ -20,18 +20,18 @@ const MessageList = () => {
           </StyledLink>
         </SearchWrapper>
         <List>
-          <OneMessageOnList />
-          <OneMessageOnList />
-          <OneMessageOnList />
-          <OneMessageOnList />
+          <OneFriendOnList />
+          <OneFriendOnList />
+          <OneFriendOnList />
+          <OneFriendOnList />
         </List>
       </Wrapper>
-      <ChatSection />
+      <FriendProfile />
     </Layout>
   );
 };
 
-export default MessageList;
+export default FriendsList;
 
 const Wrapper = styled.div`
   display: flex;
