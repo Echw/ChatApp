@@ -5,8 +5,11 @@ import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
 import OneFriendOnList from '../components/OneFriendOnList';
 import FriendProfile from '../components/FriendProfile';
+import { User, useUserContext } from '../contexts/UserContext';
 
 const FriendsList = () => {
+  const { allUsers } = useUserContext();
+
   return (
     <Layout>
       <Wrapper>
@@ -20,10 +23,9 @@ const FriendsList = () => {
           </StyledLink>
         </SearchWrapper>
         <List>
-          <OneFriendOnList />
-          <OneFriendOnList />
-          <OneFriendOnList />
-          <OneFriendOnList />
+          {allUsers.map((user) => (
+            <OneFriendOnList user={user} />
+          ))}
         </List>
       </Wrapper>
       <FriendProfile />

@@ -1,12 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import userIcon from './user.png';
+import { User } from '../contexts/UserContext';
 
-const OneFriend = () => {
+interface OneFriendProps {
+  user: User;
+}
+
+const OneFriend = (props: OneFriendProps) => {
   return (
     <Wrapper>
-      <img src={userIcon} alt="" />
-      <h3>Janek Kowalski</h3>
+      <img src={props.user.result[0].picture.medium} alt="" />
+      <h3>
+        {props.user.result[0].name.first}
+        {props.user.result[0].name.last}
+      </h3>
     </Wrapper>
   );
 };
