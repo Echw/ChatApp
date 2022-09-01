@@ -10,35 +10,33 @@ interface ProviderProps {
 }
 
 export type User = {
-  result: {
-    name: {
-      first: string;
-      last: string;
+  name: {
+    first: string;
+    last: string;
+  };
+  gender: string;
+  location: {
+    street: {
+      number: number;
+      name: string;
     };
-    gender: string;
-    location: {
-      street: {
-        number: number;
-        name: string;
-      };
-      city: string;
-      country: string;
-    };
-    phone: string;
-    picture: {
-      medium: string;
-    };
-  }[];
+    city: string;
+    country: string;
+  };
+  phone: string;
+  picture: {
+    medium: string;
+  };
 };
 
 export const UserContextProvider = (props: ProviderProps) => {
   const [users, setUsers] = useState<User[]>([]);
 
-  const url = 'https://randomuser.me/api/';
+  const url = 'https://randomuser.me/api/?results=10';
 
   useEffect(() => {
     axios.get(url).then((res) => {
-      const users = res.data;
+      const users = res.data.results;
       setUsers(users);
       console.log(res);
     });

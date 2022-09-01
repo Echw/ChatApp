@@ -8,10 +8,11 @@ import MyProfile from './pages/MyProfile';
 import StartNewChatSection from './pages/StartNewChatSection';
 import MyProfileEdit from './pages/MyProfileEdit';
 import Logout from './pages/Logout';
+import { UserContextProvider } from './contexts/UserContext';
 
 function App() {
   return (
-    <>
+    <UserContextProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/messageList" element={<MessageList />} />
@@ -25,7 +26,7 @@ function App() {
         <Route path="/profileedit" element={<MyProfileEdit />} />
         <Route path="/goodbye" element={<Logout />} />
       </Routes>
-    </>
+    </UserContextProvider>
   );
 }
 

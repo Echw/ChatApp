@@ -6,19 +6,18 @@ interface OneFriendProps {
   user: User;
 }
 
-const OneFriend = (props: OneFriendProps) => {
+const OneFriendOnList = (props: OneFriendProps) => {
   return (
     <Wrapper>
-      <img src={props.user.result[0].picture.medium} alt="" />
+      <img src={props.user.picture.medium} alt="" />
       <h3>
-        {props.user.result[0].name.first}
-        {props.user.result[0].name.last}
+        {props.user.name.first} {props.user.name.last}
       </h3>
     </Wrapper>
   );
 };
 
-export default OneFriend;
+export default OneFriendOnList;
 
 const Wrapper = styled.div`
   display: flex;

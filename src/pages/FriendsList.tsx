@@ -22,11 +22,13 @@ const FriendsList = () => {
             <AiOutlinePlus />
           </StyledLink>
         </SearchWrapper>
-        <List>
-          {allUsers.map((user) => (
-            <OneFriendOnList user={user} />
-          ))}
-        </List>
+        {allUsers.length > 0 && (
+          <List>
+            {allUsers.map((user) => (
+              <OneFriendOnList user={user} />
+            ))}
+          </List>
+        )}
       </Wrapper>
       <FriendProfile />
     </Layout>
