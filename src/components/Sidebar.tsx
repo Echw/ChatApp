@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsChatDotsFill } from 'react-icons/bs';
 import { BsFillGearFill } from 'react-icons/bs';
-import { FaUserAlt } from 'react-icons/fa';
 import { FaUserFriends } from 'react-icons/fa';
 import { RiLogoutBoxRFill } from 'react-icons/ri';
 import userIcon from './user.png';
@@ -21,7 +20,8 @@ const Sidebar = () => {
           <StyledLink to="/friendsList">
             <FaUserFriends />
           </StyledLink>
-          <StyledLink to="/">
+
+          <StyledLink to="/profile">
             <BsFillGearFill />
           </StyledLink>
         </SidebarIcons>

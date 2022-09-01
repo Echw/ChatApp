@@ -1,49 +1,52 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import userIcon from './user.png';
+import userIcon from '../components/user.png';
+import Layout from './../components/Layout';
 
-const FriendProfile = () => {
+const MyProfile = () => {
   return (
-    <ProfileWrapper>
-      <NameSection>
-        <h2>Janek Kowalski</h2>
-        <div>
-          <ActivitiIcon></ActivitiIcon>
-          <span>online</span>
-        </div>
-      </NameSection>
-      <DetailsSection>
-        <InfoWrapper>
-          <Img src={userIcon} alt="" />
-          <ProfileInfo>
-            <div>
-              <span>Name</span>
-              <h3>Janek Kowalski</h3>
-            </div>
-            <div>
-              <span>Adress</span>
-              <h4>Pacanowo 99, Pacanowo</h4>
-            </div>
-            <div>
-              <span>Country</span>
-              <h4>Polska</h4>
-            </div>
-            <div>
-              <span>Number</span>
-              <h4>666 666 666</h4>
-            </div>
-          </ProfileInfo>
-          <Button>
-            <button>Add to Friend</button>
-            <button>Remove from Friends</button>
-          </Button>
-        </InfoWrapper>
-      </DetailsSection>
-    </ProfileWrapper>
+    <Layout>
+      <ProfileWrapper>
+        <NameSection>
+          <h2>My Profile</h2>
+          <div>
+            <ActivitiIcon></ActivitiIcon>
+            <span>online</span>
+          </div>
+        </NameSection>
+        <DetailsSection>
+          <InfoWrapper>
+            <Img src={userIcon} alt="" />
+            <ProfileInfo>
+              <div>
+                <span>Name</span>
+                <h3>Janek Kowalski</h3>
+              </div>
+              <div>
+                <span>Adress</span>
+                <h4>Pacanowo 99, Pacanowo</h4>
+              </div>
+              <div>
+                <span>Country</span>
+                <h4>Polska</h4>
+              </div>
+              <div>
+                <span>Number</span>
+                <h4>666 666 666</h4>
+              </div>
+            </ProfileInfo>
+            <Button>
+              <StyledLink to="/profileedit">Edit</StyledLink>
+            </Button>
+          </InfoWrapper>
+        </DetailsSection>
+      </ProfileWrapper>
+    </Layout>
   );
 };
 
-export default FriendProfile;
+export default MyProfile;
 
 const ProfileWrapper = styled.div`
   display: flex;
@@ -137,21 +140,22 @@ const Button = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  button {
-    border: 0;
-    border-radius: 5rem;
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 2rem;
-    gap: 1rem;
-    color: white;
-    background-color: #294245;
+`;
 
-    :hover {
-      cursor: pointer;
-      background-color: #1f2b2c;
-    }
+const StyledLink = styled(Link)`
+  border: 0;
+  border-radius: 5rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  color: white;
+  background-color: #294245;
+
+  :hover {
+    cursor: pointer;
+    background-color: #1f2b2c;
   }
 `;
