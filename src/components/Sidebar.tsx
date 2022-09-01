@@ -27,7 +27,7 @@ const Sidebar = () => {
         </SidebarIcons>
       </ProfileImgWrapper>
 
-      <StyledLink to="/messageList">
+      <StyledLink to="/goodbye">
         <RiLogoutBoxRFill />
       </StyledLink>
     </Wrapper>

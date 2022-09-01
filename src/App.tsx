@@ -7,6 +7,7 @@ import MessageList from './pages/MessageList';
 import MyProfile from './pages/MyProfile';
 import StartNewChatSection from './pages/StartNewChatSection';
 import MyProfileEdit from './pages/MyProfileEdit';
+import Logout from './pages/Logout';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/friendsList" element={<FriendsList />} />
         <Route path="/profile" element={<MyProfile />} />
         <Route path="/profileedit" element={<MyProfileEdit />} />
+        <Route path="/goodbye" element={<Logout />} />
       </Routes>
     </>
   );
