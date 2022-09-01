@@ -26,13 +26,14 @@ export type User = {
   phone: string;
   picture: {
     medium: string;
+    large: string;
   };
 };
 
 export const UserContextProvider = (props: ProviderProps) => {
   const [users, setUsers] = useState<User[]>([]);
 
-  const url = 'https://randomuser.me/api/?results=10';
+  const url = 'https://randomuser.me/api/?results=8';
 
   useEffect(() => {
     axios.get(url).then((res) => {

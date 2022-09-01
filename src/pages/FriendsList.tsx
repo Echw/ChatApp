@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
 import Layout from '../components/Layout';
@@ -9,6 +9,7 @@ import { User, useUserContext } from '../contexts/UserContext';
 
 const FriendsList = () => {
   const { allUsers } = useUserContext();
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   return (
     <Layout>
@@ -25,12 +26,12 @@ const FriendsList = () => {
         {allUsers.length > 0 && (
           <List>
             {allUsers.map((user) => (
-              <OneFriendOnList user={user} />
+              <OneFriendOnList user={user} selectUser={setSelectedUser} />
             ))}
           </List>
         )}
       </Wrapper>
-      <FriendProfile />
+      <FriendProfile user={selectedUser} />
     </Layout>
   );
 };
@@ -38,6 +39,7 @@ const FriendsList = () => {
 export default FriendsList;
 
 const Wrapper = styled.div`
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,6 +90,10 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* overflow-y: scroll; */
+  /* flex: 1 0 0; */
 `;
 
 const SearchBarContainer = styled.div`

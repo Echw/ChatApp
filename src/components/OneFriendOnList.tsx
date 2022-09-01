@@ -4,11 +4,12 @@ import { User } from '../contexts/UserContext';
 
 interface OneFriendProps {
   user: User;
+  selectUser: (user: User) => void;
 }
 
 const OneFriendOnList = (props: OneFriendProps) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={() => props.selectUser(props.user)}>
       <img src={props.user.picture.medium} alt="" />
       <h3>
         {props.user.name.first} {props.user.name.last}

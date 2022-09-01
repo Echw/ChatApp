@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import userIcon from './user.png';
+import { User } from '../contexts/UserContext';
 
-const FriendProfile = () => {
+interface FriendProfileProps {
+  user: User | null;
+}
+
+const FriendProfile = (props: FriendProfileProps) => {
+  if (props.user === null) return <></>;
+
   return (
     <ProfileWrapper>
       <NameSection>
-        <h2>Janek Kowalski</h2>
+        <h2>
+          {props.user.name.first} {props.user.name.last}
+        </h2>
         <div>
           <ActivitiIcon></ActivitiIcon>
           <span>online</span>
@@ -14,23 +22,29 @@ const FriendProfile = () => {
       </NameSection>
       <DetailsSection>
         <InfoWrapper>
-          <Img src={userIcon} alt="" />
+          <Img src={props.user.picture.large} alt="" />
           <ProfileInfo>
             <div>
               <span>Name</span>
-              <h3>Janek Kowalski</h3>
+              <h3>
+                {props.user.name.first} {props.user.name.last}
+              </h3>
             </div>
             <div>
               <span>Adress</span>
-              <h4>Pacanowo 99, Pacanowo</h4>
+              <h4>
+                {' '}
+                {props.user.location.street.name}{' '}
+                {props.user.location.street.number} {props.user.location.city}
+              </h4>
             </div>
             <div>
               <span>Country</span>
-              <h4>Polska</h4>
+              <h4>{props.user.location.country}</h4>
             </div>
             <div>
               <span>Number</span>
-              <h4>666 666 666</h4>
+              <h4>{props.user.phone}</h4>
             </div>
           </ProfileInfo>
           <Button>
