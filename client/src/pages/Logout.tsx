@@ -12,7 +12,7 @@ const Logout = () => {
       <h1>You are now logged out!</h1>
       <Button>
         <h2>Do you want to log in?</h2>
-        <StyledLink to="/profile">Log In</StyledLink>
+        <StyledLink to="/">Log In</StyledLink>
       </Button>
     </Wrapper>
   );
