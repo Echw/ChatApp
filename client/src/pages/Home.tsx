@@ -4,15 +4,20 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
 import img from '../components/8741.svg';
+import { Socket } from 'socket.io-client';
 
-const Home = () => {
+interface HomeProps {
+  socket: Socket;
+}
+
+const Home = (props: HomeProps) => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState('');
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     localStorage.setItem('userName', userName);
-    navigate('/chat');
+    navigate('/messageList');
   };
 
   return (
@@ -34,7 +39,7 @@ const Home = () => {
               onChange={(event) => setUserName(event.target.value)}
             />
             <Button>
-              <StyledLink to="/profile">Sign in</StyledLink>
+              <StyledLink>Sign in</StyledLink>
             </Button>
           </Form>
         </FormWrapper>
@@ -107,7 +112,7 @@ const Button = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.button`
   border: 0;
   border-radius: 5rem;
   font-size: 1rem;

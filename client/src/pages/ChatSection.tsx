@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import AddMessage from '../components/AddMessage';
 import IncomingMessage from '../components/IncomingMessage';
 import OutgoingMessage from '../components/OutgoingMessage';
+import { Socket } from 'socket.io-client';
 
-const ChatSection = () => {
+interface ChatSectionProps {
+  socket: Socket;
+}
+
+const ChatSection = (props: ChatSectionProps) => {
   return (
     <Wrapper>
       <NameSection>
@@ -22,7 +27,7 @@ const ChatSection = () => {
         <IncomingMessage></IncomingMessage>
         <OutgoingMessage></OutgoingMessage>
       </MessagesSection>
-      <AddMessage />
+      <AddMessage socket={props.socket} />
     </Wrapper>
   );
 };

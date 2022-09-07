@@ -19,6 +19,10 @@ app.get('/api', (req: any, res: any) => {
 
 socketIO.on('connection', (socket: any) => {
   console.log(`⚡: ${socket.id} user just connected!`);
+  socket.on('message', (data: any) => {
+    console.log(data);
+  });
+
   socket.on('disconnect', () => {
     console.log('🔥: A user disconnected');
   });

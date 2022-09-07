@@ -17,12 +17,15 @@ function App() {
   return (
     <UserContextProvider>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/messageList" element={<MessageList />} />
-        <Route path="/messageList/ChatSection" element={<ChatSection />} />
+        <Route path="/" element={<Home socket={socket} />} />
+        <Route path="/messageList" element={<MessageList socket={socket} />} />
+        <Route
+          path="/messageList/ChatSection"
+          element={<ChatSection socket={socket} />}
+        />
         <Route
           path="/messageList/StartNewChat"
-          element={<StartNewChatSection />}
+          element={<StartNewChatSection socket={socket} />}
         />
         <Route path="/friendsList" element={<FriendsList />} />
         <Route path="/profile" element={<MyProfile />} />

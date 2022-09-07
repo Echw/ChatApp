@@ -1,10 +1,15 @@
 import React from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { IoIosSend } from 'react-icons/io';
+import { Socket } from 'socket.io-client';
 import styled from 'styled-components';
 import AddMessage from '../components/AddMessage';
 
-const StartNewChatSection = () => {
+interface StartNewChatSectionProps {
+  socket: Socket;
+}
+
+const StartNewChatSection = (props: StartNewChatSectionProps) => {
   return (
     <Wrapper>
       <Icon>
@@ -15,7 +20,7 @@ const StartNewChatSection = () => {
         Add Friend
         <AiOutlinePlus />
       </AddFriend>
-      <AddMessage />
+      <AddMessage socket={props.socket} />
     </Wrapper>
   );
 };

@@ -5,8 +5,12 @@ import OneMessageOnList from '../components/OneMessageOnList';
 import Layout from '../components/Layout';
 import ChatSection from './ChatSection';
 import { Link } from 'react-router-dom';
+import { Socket } from 'socket.io-client';
+interface MessageListProps {
+  socket: Socket;
+}
 
-const MessageList = () => {
+const MessageList = (props: MessageListProps) => {
   return (
     <Layout>
       <Wrapper>
@@ -26,7 +30,7 @@ const MessageList = () => {
           <OneMessageOnList />
         </List>
       </Wrapper>
-      <ChatSection />
+      <ChatSection socket={props.socket} />
     </Layout>
   );
 };

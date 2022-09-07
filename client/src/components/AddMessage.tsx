@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsFillEmojiSmileFill } from 'react-icons/bs';
 import { IoMdSend } from 'react-icons/io';
+import { Socket } from 'socket.io-client';
 import styled from 'styled-components';
 
-const AddMessage = () => {
+interface AddMessageProps {
+  socket: Socket;
+}
+
+const AddMessage = (props: AddMessageProps) => {
+  const [message, setMessage] = useState('');
+
+  const handleSendMessage = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (message.trim() && localStorage.getItem('userName')) {
+      props.socket.emit('message', {
+        text: message,
+        name: localStorage.getItem('userName'),
+        id: `${props.socket.id}${Math.random()}`,
+        socketID: props.socket.id,
+      });
+    }
+    setMessage('');
+  };
+
   return (
-    <NewMessageSection>
+    <NewMessageSection onSubmit={handleSendMessage}>
       <button>
         <BsFillEmojiSmileFill />
       </button>
-      <input type="text" placeholder="Type message..." />
-      <button>
+      <input
+        type="text"
+        placeholder="Type message..."
+        onChange={(event) => setMessage(event.target.value)}
+      />
+      <button type="submit">
         <IoMdSend />
       </button>
     </NewMessageSection>
@@ -19,7 +44,7 @@ const AddMessage = () => {
 
 export default AddMessage;
 
-const NewMessageSection = styled.div`
+const NewMessageSection = styled.form`
   display: flex;
   flex-direction: row;
   background-color: white;
