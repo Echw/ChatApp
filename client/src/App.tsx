@@ -11,9 +11,7 @@ import Logout from './pages/Logout';
 import { UserContextProvider } from './contexts/UserContext';
 import socketIO from 'socket.io-client';
 
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io();
-
-const socket = socketIO.connect('http://localhost:4000');
+const socket = socketIO('http://localhost:4000/');
 
 function App() {
   return (
