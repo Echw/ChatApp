@@ -17,8 +17,7 @@ const IncomingMessage = (props: IncomingMessageProps) => {
           <div></div>
         </ChatBubble>
         <TimeWrapper>
-          <span>06-06</span>
-          <span>14:15 PM</span>
+          <span>{props.message.time}</span>
         </TimeWrapper>
       </BubbleWrapper>
     </Wrapper>

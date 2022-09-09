@@ -14,6 +14,7 @@ export type Message = {
   name: string;
   id: string;
   socketID: string;
+  time: string;
 };
 
 const ChatSection = (props: ChatSectionProps) => {

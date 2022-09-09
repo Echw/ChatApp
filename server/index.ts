@@ -20,6 +20,7 @@ type Message = {
   name: string;
   id: string;
   socketID: string;
+  time: string;
 };
 
 let users: User[] = [];

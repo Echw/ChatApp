@@ -20,6 +20,7 @@ const AddMessage = (props: AddMessageProps) => {
         name: localStorage.getItem('userName'),
         id: `${props.socket.id}${Math.random()}`,
         socketID: props.socket.id,
+        time: new Date().toLocaleString(),
       });
     }
     setMessage('');
