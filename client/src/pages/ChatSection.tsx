@@ -9,7 +9,7 @@ interface ChatSectionProps {
   socket: Socket;
 }
 
-type Message = {
+export type Message = {
   text: string;
   name: string;
   id: string;
@@ -36,12 +36,19 @@ const ChatSection = (props: ChatSectionProps) => {
         </div>
       </NameSection>
       <MessagesSection>
-        <IncomingMessage></IncomingMessage>
-        <OutgoingMessage></OutgoingMessage>
-        <IncomingMessage></IncomingMessage>
-        <OutgoingMessage></OutgoingMessage>
-        <IncomingMessage></IncomingMessage>
-        <OutgoingMessage></OutgoingMessage>
+        {messages.map((message) =>
+          message.name === localStorage.getItem('userName') ? (
+            <OutgoingMessage
+              key={message.id}
+              message={message}
+            ></OutgoingMessage>
+          ) : (
+            <IncomingMessage
+              key={message.id}
+              message={message}
+            ></IncomingMessage>
+          )
+        )}
       </MessagesSection>
       <AddMessage socket={props.socket} />
     </Wrapper>

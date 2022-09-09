@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BigHead } from '@bigheads/core';
+import { Message } from '../pages/ChatSection';
 
-const OutgoingMessage = () => {
+interface OutgoingMessageProps {
+  message: Message;
+}
+
+const OutgoingMessage = (props: OutgoingMessageProps) => {
   return (
     <Wrapper>
       <BubbleWrapper>
         <ChatBubble>
-          <span>
-            Culpa doloremque enim commodi velit at dolore dolor praesentium
-            doloribus quod explicabo modi
-          </span>
+          <span>{props.message.text}</span>
           <div></div>
         </ChatBubble>
         <TimeWrapper>
