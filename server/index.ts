@@ -9,6 +9,21 @@ const socketIO = require('socket.io')(http, {
   },
 });
 
+type User = {
+  userName: string;
+  id: string;
+  socketID: string;
+};
+
+type Message = {
+  text: string;
+  name: string;
+  id: string;
+  socketID: string;
+};
+
+let users: User[] = [];
+
 app.use(cors());
 
 app.get('/api', (req: any, res: any) => {
@@ -19,12 +34,20 @@ app.get('/api', (req: any, res: any) => {
 
 socketIO.on('connection', (socket: any) => {
   console.log(`⚡: ${socket.id} user just connected!`);
-  socket.on('message', (data: any) => {
+  socket.on('message', (data: Message) => {
     socketIO.emit('messageResponse', data);
+  });
+
+  socket.on('newUser', (data: User) => {
+    users.push(data);
+    socketIO.emit('newUserResponse', users);
   });
 
   socket.on('disconnect', () => {
     console.log('🔥: A user disconnected');
+    users = users.filter((user) => user.socketID !== socket.id);
+    socketIO.emit('newUserResponse', users);
+    socket.disconnect();
   });
 });
 

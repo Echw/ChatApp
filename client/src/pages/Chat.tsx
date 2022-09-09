@@ -1,20 +1,27 @@
 import { Socket } from 'socket.io-client';
 import Layout from '../components/Layout';
 import styled from 'styled-components';
-
 import OneFriendOnList from '../components/OneFriendOnList';
-import FriendProfile from '../components/FriendProfile';
-import { User, useUserContext } from '../contexts/UserContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ChatSection from './ChatSection';
 
 interface ChatProps {
   socket: Socket;
 }
 
+export type User = {
+  userName: string;
+  id: string;
+  socketID: string;
+};
+
 const Chat = (props: ChatProps) => {
-  const { allUsers } = useUserContext();
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    console.log('siurak');
+    props.socket.on('newUserResponse', (data) => setUsers(data));
+  }, [props.socket, users]);
 
   return (
     <Layout>
@@ -22,15 +29,12 @@ const Chat = (props: ChatProps) => {
         <ListWrapper>
           <ListTitle>Chat List</ListTitle>
         </ListWrapper>
-        {allUsers.length > 0 && (
-          <List>
-            {allUsers.map((user) => (
-              <OneFriendOnList user={user} selectUser={setSelectedUser} />
-            ))}
-          </List>
-        )}
+        <List>
+          {users.map((user) => (
+            <OneFriendOnList key={user.socketID} user={user} />
+          ))}
+        </List>
       </Wrapper>
-      <FriendProfile user={selectedUser} />
       <ChatSection socket={props.socket}></ChatSection>
     </Layout>
   );

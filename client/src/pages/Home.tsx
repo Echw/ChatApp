@@ -17,6 +17,8 @@ const Home = (props: HomeProps) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     localStorage.setItem('userName', userName);
+    props.socket.emit('newUser', { userName, socketID: props.socket.id });
+
     navigate('/chat');
   };
 

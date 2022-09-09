@@ -23,13 +23,13 @@ const FriendsList = () => {
             <AiOutlinePlus />
           </StyledLink>
         </SearchWrapper>
-        {allUsers.length > 0 && (
+        {/* {allUsers.length > 0 && (
           <List>
             {allUsers.map((user) => (
               <OneFriendOnList user={user} selectUser={setSelectedUser} />
             ))}
           </List>
-        )}
+        )} */}
       </Wrapper>
       <FriendProfile user={selectedUser} />
     </Layout>

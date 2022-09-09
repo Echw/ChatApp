@@ -1,20 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { User } from '../contexts/UserContext';
 import { BigHead } from '@bigheads/core';
+import { User } from '../pages/Chat';
 
 interface OneFriendProps {
   user: User;
-  selectUser: (user: User) => void;
 }
 
 const OneFriendOnList = (props: OneFriendProps) => {
   return (
     <Wrapper>
       <BigHead />
-      <h3>
-        {props.user.name.first} {props.user.name.last}
-      </h3>
+      <h3>{props.user.userName}</h3>
     </Wrapper>
   );
 };
