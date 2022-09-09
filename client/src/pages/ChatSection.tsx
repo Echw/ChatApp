@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AddMessage from '../components/AddMessage';
 import IncomingMessage from '../components/IncomingMessage';
@@ -9,11 +9,27 @@ interface ChatSectionProps {
   socket: Socket;
 }
 
+type Message = {
+  text: string;
+  name: string;
+  id: string;
+  socketID: string;
+};
+
 const ChatSection = (props: ChatSectionProps) => {
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  useEffect(() => {
+    props.socket.on('messageResponse', (data) => {
+      console.log(data);
+      setMessages([...messages, data]);
+    });
+  }, [props.socket, messages]);
+
   return (
     <Wrapper>
       <NameSection>
-        <h2>Janek Kowalski</h2>
+        <h2>Your Chat</h2>
         <div>
           <ActivitiIcon></ActivitiIcon>
           <span>online</span>

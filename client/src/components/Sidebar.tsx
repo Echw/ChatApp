@@ -1,29 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BsChatDotsFill } from 'react-icons/bs';
-import { BsFillGearFill } from 'react-icons/bs';
-import { FaUserFriends } from 'react-icons/fa';
 import { RiLogoutBoxRFill } from 'react-icons/ri';
-import userIcon from './user.png';
 import { Link } from 'react-router-dom';
+import { BigHead } from '@bigheads/core';
 
 const Sidebar = () => {
   return (
     <Wrapper>
       <ProfileImgWrapper>
-        <ActivityIcon />
-        <Img src={userIcon} />
+        <BigHead />
         <SidebarIcons>
-          <StyledLink to="/messageList">
+          <StyledLink to="/chat">
             <BsChatDotsFill />
           </StyledLink>
-          <StyledLink to="/friendsList">
+          {/* <StyledLink to="/friendsList">
             <FaUserFriends />
-          </StyledLink>
+          </StyledLink> */}
 
-          <StyledLink to="/profile">
+          {/* <StyledLink to="/profile">
             <BsFillGearFill />
-          </StyledLink>
+          </StyledLink> */}
         </SidebarIcons>
       </ProfileImgWrapper>
 
@@ -64,7 +61,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Img = styled.img`
+const Img = styled.div`
   object-fit: cover;
   overflow: hidden;
   width: 4rem;

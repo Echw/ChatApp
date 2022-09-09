@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import userIcon from './user.png';
+import { BigHead } from '@bigheads/core';
 
 const OutgoingMessage = () => {
   return (
@@ -18,7 +18,7 @@ const OutgoingMessage = () => {
           <span>14:15 PM</span>
         </TimeWrapper>
       </BubbleWrapper>
-      <img src={userIcon} alt="" />
+      <BigHead />
     </Wrapper>
   );
 };
@@ -31,11 +31,9 @@ const Wrapper = styled.div`
   gap: 1.5rem;
   margin: 3rem 2rem;
 
-  img {
-    height: 4rem;
-    width: 4rem;
-    border-radius: 50%;
-    background-color: #a9a9a9;
+  svg {
+    height: 6rem;
+    width: 6rem;
     object-fit: cover;
   }
 `;
@@ -56,7 +54,7 @@ const TimeWrapper = styled.div`
 
 const ChatBubble = styled.div`
   display: flex;
-  background-color: #5ebe5e;
+  background-color: #599dbf;
   width: 30rem;
   padding: 1.5rem;
   border-radius: 2rem;
@@ -66,7 +64,7 @@ const ChatBubble = styled.div`
     position: absolute;
     top: 0;
     right: -1rem;
-    background-color: #5ebe5e;
+    background-color: #599dbf;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transform: scaleX(-1);
     width: 3rem;

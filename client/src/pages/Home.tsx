@@ -17,7 +17,7 @@ const Home = (props: HomeProps) => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     localStorage.setItem('userName', userName);
-    navigate('/messageList');
+    navigate('/chat');
   };
 
   return (

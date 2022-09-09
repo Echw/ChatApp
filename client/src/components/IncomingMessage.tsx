@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import userIcon from './user.png';
+import { BigHead } from '@bigheads/core';
 
 const IncomingMessage = () => {
   return (
     <Wrapper>
-      <img src={userIcon} alt="" />
+      <BigHead />
       <BubbleWrapper>
         <ChatBubble>
           <span>
@@ -30,11 +30,9 @@ const Wrapper = styled.div`
   gap: 1.5rem;
   margin: 3rem 2rem;
 
-  img {
-    height: 4rem;
-    width: 4rem;
-    border-radius: 50%;
-    background-color: #a9a9a9;
+  svg {
+    height: 6rem;
+    width: 6rem;
     object-fit: cover;
   }
 `;

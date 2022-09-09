@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { User } from '../contexts/UserContext';
+import { BigHead } from '@bigheads/core';
 
 interface OneFriendProps {
   user: User;
@@ -9,8 +10,8 @@ interface OneFriendProps {
 
 const OneFriendOnList = (props: OneFriendProps) => {
   return (
-    <Wrapper onClick={() => props.selectUser(props.user)}>
-      <img src={props.user.picture.medium} alt="" />
+    <Wrapper>
+      <BigHead />
       <h3>
         {props.user.name.first} {props.user.name.last}
       </h3>
@@ -33,11 +34,9 @@ const Wrapper = styled.div`
     background-color: #1f2b2c;
   }
 
-  img {
-    height: 4rem;
-    width: 4rem;
-    border-radius: 50%;
-    background-color: #a9a9a9;
+  svg {
+    height: 6rem;
+    width: 6rem;
     object-fit: cover;
   }
 
