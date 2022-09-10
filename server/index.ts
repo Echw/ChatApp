@@ -13,6 +13,7 @@ type User = {
   userName: string;
   id: string;
   socketID: string;
+  avatar: any;
 };
 
 type Message = {
@@ -40,6 +41,7 @@ socketIO.on('connection', (socket: any) => {
   });
 
   socket.on('newUser', (data: User) => {
+    console.log(data.avatar);
     users.push(data);
     socketIO.emit('newUserResponse', users);
   });

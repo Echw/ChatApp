@@ -18,8 +18,9 @@ export type User = {
 const Chat = (props: ChatProps) => {
   const [users, setUsers] = useState<User[]>([]);
 
+  console.log(users);
+
   useEffect(() => {
-    console.log('siurak');
     props.socket.on('newUserResponse', (data) => setUsers(data));
   }, [props.socket, users]);
 

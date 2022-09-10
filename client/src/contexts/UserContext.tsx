@@ -1,50 +1,39 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { createContext, useContext, useState } from 'react';
+import { Avatar } from '../types/Avatar';
 
 const UserContext = createContext({
-  allUsers: [] as User[],
+  get userName(): string {
+    throw new Error('UserContext not defined');
+  },
+  setUserName: (value: string) => {},
+  get defaultAvatar(): Avatar {
+    throw new Error('UserContext not defined');
+  },
+  setDefaultAvatar: (avatar: Avatar) => {},
 });
 
 interface ProviderProps {
   children: React.ReactNode;
 }
 
-export type User = {
-  name: {
-    first: string;
-    last: string;
-  };
-  gender: string;
-  location: {
-    street: {
-      number: number;
-      name: string;
-    };
-    city: string;
-    country: string;
-  };
-  phone: string;
-  picture: {
-    medium: string;
-    large: string;
-  };
-};
-
 export const UserContextProvider = (props: ProviderProps) => {
-  const [users, setUsers] = useState<User[]>([]);
-
-  const url = 'https://randomuser.me/api/?results=8';
-
-  useEffect(() => {
-    axios.get(url).then((res) => {
-      const users = res.data.results;
-      setUsers(users);
-      console.log(res);
-    });
-  }, []);
+  const [userName, setUserName] = useState('');
+  const [defaultAvatar, setDefaultAvatar] = useState<Avatar>({
+    body: 'chest',
+    clothing: 'shirt',
+    clothingColor: 'white',
+    eyes: 'normal',
+    facialHair: 'none',
+    hair: 'none',
+    hairColor: 'blonde',
+    mouth: 'serious',
+    skinTone: 'light',
+  });
 
   return (
-    <UserContext.Provider value={{ allUsers: users }}>
+    <UserContext.Provider
+      value={{ userName, setUserName, defaultAvatar, setDefaultAvatar }}
+    >
       {props.children}
     </UserContext.Provider>
   );

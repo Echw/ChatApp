@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
-import { Link } from 'react-router-dom';
-import img from '../components/8741.svg';
 import { Socket } from 'socket.io-client';
+import AvatarPlayground from './../components/AvatarPlayground';
+import { useUserContext } from '../contexts/UserContext';
 
 interface HomeProps {
   socket: Socket;
@@ -12,24 +12,37 @@ interface HomeProps {
 
 const Home = (props: HomeProps) => {
   const navigate = useNavigate();
-  const [userName, setUserName] = useState('');
+  const { defaultAvatar, setDefaultAvatar, setUserName, userName } =
+    useUserContext();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     localStorage.setItem('userName', userName);
-    props.socket.emit('newUser', { userName, socketID: props.socket.id });
+    props.socket.emit('newUser', {
+      userName,
+      socketID: props.socket.id,
+      avatar: defaultAvatar,
+    });
 
     navigate('/chat');
+  };
+
+  const changeAvatar = (part: string, value: string) => {
+    setDefaultAvatar({
+      ...defaultAvatar,
+      [part]: value,
+    });
   };
 
   return (
     <Layout>
       <Wrapper>
-        <FormWrapper>
-          <ImgWrapper>
-            <img src={img} alt="img" />
-          </ImgWrapper>
-          <h1>Sign in to Chat</h1>
+        <JoinWrapper>
+          <h1>Join Chat</h1>
+          <AvatarPlayground
+            avatar={defaultAvatar}
+            onChangeAvatar={changeAvatar}
+          />
           <Form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -44,7 +57,7 @@ const Home = (props: HomeProps) => {
               <StyledLink>Sign in</StyledLink>
             </Button>
           </Form>
-        </FormWrapper>
+        </JoinWrapper>
       </Wrapper>
     </Layout>
   );
@@ -62,7 +75,7 @@ const Wrapper = styled.div`
   color: #828282;
 `;
 
-const FormWrapper = styled.div`
+const JoinWrapper = styled.div`
   background-color: white;
   flex-direction: column;
   align-items: center;
@@ -71,24 +84,20 @@ const FormWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  width: 50%;
   z-index: 1000;
 `;
 const Form = styled.form`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  position: relative;
   gap: 1rem;
+  margin-top: 2rem;
+
   input {
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     border: 0.2rem solid #a9a9a9;
+    font-size: 1.5rem;
   }
-`;
-
-const ImgWrapper = styled.div`
-  width: 20rem;
 `;
 
 const Button = styled.div`

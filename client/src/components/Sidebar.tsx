@@ -3,27 +3,22 @@ import styled from 'styled-components';
 import { BsChatDotsFill } from 'react-icons/bs';
 import { RiLogoutBoxRFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import { BigHead } from '@bigheads/core';
+import UserAvatar from './UserAvatar';
+import { useUserContext } from '../contexts/UserContext';
 
 const Sidebar = () => {
+  const { defaultAvatar } = useUserContext();
+
   return (
     <Wrapper>
       <ProfileImgWrapper>
-        <BigHead />
+        <UserAvatar avatar={defaultAvatar}></UserAvatar>
         <SidebarIcons>
           <StyledLink to="/chat">
             <BsChatDotsFill />
           </StyledLink>
-          {/* <StyledLink to="/friendsList">
-            <FaUserFriends />
-          </StyledLink> */}
-
-          {/* <StyledLink to="/profile">
-            <BsFillGearFill />
-          </StyledLink> */}
         </SidebarIcons>
       </ProfileImgWrapper>
-
       <StyledLink to="/goodbye">
         <RiLogoutBoxRFill />
       </StyledLink>
@@ -61,14 +56,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Img = styled.div`
-  object-fit: cover;
-  overflow: hidden;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  background-color: #a9a9a9;
-`;
 const ProfileImgWrapper = styled.div`
   position: relative;
   display: flex;
@@ -77,16 +64,7 @@ const ProfileImgWrapper = styled.div`
   justify-content: center;
   width: 100%;
 `;
-const ActivityIcon = styled.div`
-  position: absolute;
-  top: 3.3rem;
-  right: 1.5rem;
-  border: 0.1rem solid white;
-  background-color: #00ff00;
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 50%;
-`;
+
 const SidebarIcons = styled.div`
   display: flex;
   flex-direction: column;
