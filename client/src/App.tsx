@@ -14,17 +14,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home socket={socket} />} />
         <Route path="/chat" element={<Chat socket={socket} />} />
-        {/* <Route
-          path="/chat/ChatSection"
-          element={<ChatSection socket={socket} />}
-        /> */}
-        {/* <Route
-          path="/messageList/StartNewChat"
-          element={<StartNewChatSection socket={socket} />}
-        /> */}
-        {/* <Route path="/friendsList" element={<FriendsList />} /> */}
-        {/* <Route path="/profile" element={<MyProfile />} /> */}
-        {/* <Route path="/profileedit" element={<MyProfileEdit />} /> */}
         <Route path="/goodbye" element={<Logout />} />
       </Routes>
     </UserContextProvider>

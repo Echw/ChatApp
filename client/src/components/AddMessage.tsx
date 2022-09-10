@@ -27,7 +27,6 @@ const AddMessage = (props: AddMessageProps) => {
       });
     }
     setMessage('');
-    // setShowEmoji(false)
   };
 
   const onEmojiClick = (event: any, emojiObject: IEmojiData) => {

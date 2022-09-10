@@ -60,6 +60,4 @@ const List = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  /* overflow-y: scroll; */
-  /* flex: 1 0 0; */
 `;
