@@ -3,6 +3,8 @@ import { BsFillEmojiSmileFill } from 'react-icons/bs';
 import { IoMdSend } from 'react-icons/io';
 import { Socket } from 'socket.io-client';
 import styled from 'styled-components';
+import Emoji from './Emoji';
+import { IEmojiData } from 'emoji-picker-react';
 
 interface AddMessageProps {
   socket: Socket;
@@ -10,6 +12,7 @@ interface AddMessageProps {
 
 const AddMessage = (props: AddMessageProps) => {
   const [message, setMessage] = useState('');
+  const [showEmoji, setShowEmoji] = useState(false);
 
   const handleSendMessage = (event: React.FormEvent) => {
     event.preventDefault();
@@ -26,15 +29,23 @@ const AddMessage = (props: AddMessageProps) => {
     setMessage('');
   };
 
+  const onEmojiClick = (event: any, emojiObject: IEmojiData) => {
+    setMessage((prevValue) => prevValue + emojiObject.emoji);
+  };
+
+  const showEmojiOnClick = () => setShowEmoji((prevValue) => !prevValue);
+
   return (
     <NewMessageSection onSubmit={handleSendMessage}>
-      <button>
+      <button onClick={showEmojiOnClick}>
         <BsFillEmojiSmileFill />
       </button>
+      {showEmoji && <Emoji onEmojiClick={onEmojiClick} />}
       <input
         type="text"
         placeholder="Type message..."
         onChange={(event) => setMessage(event.target.value)}
+        value={message}
       />
       <button type="submit">
         <IoMdSend />
