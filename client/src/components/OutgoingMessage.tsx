@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BigHead } from '@bigheads/core';
 import { Message } from '../pages/ChatSection';
+import { User } from '../types/User';
+import UserAvatar from './UserAvatar';
 
 interface OutgoingMessageProps {
   message: Message;
+  user: User;
 }
 
 const OutgoingMessage = (props: OutgoingMessageProps) => {
@@ -19,7 +21,7 @@ const OutgoingMessage = (props: OutgoingMessageProps) => {
           <span>{props.message.time}</span>
         </TimeWrapper>
       </BubbleWrapper>
-      <BigHead />
+      <UserAvatarDiv avatar={props.user.avatar} />
     </Wrapper>
   );
 };
@@ -79,4 +81,8 @@ const ChatBubble = styled.div`
     z-index: 100;
     line-height: 1.75rem;
   }
+`;
+
+const UserAvatarDiv = styled(UserAvatar)`
+  width: auto;
 `;

@@ -2,27 +2,20 @@ import { Socket } from 'socket.io-client';
 import Layout from '../components/Layout';
 import styled from 'styled-components';
 import OneFriendOnList from '../components/OneFriendOnList';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ChatSection from './ChatSection';
+import { useUserContext } from '../contexts/UserContext';
 
 interface ChatProps {
   socket: Socket;
 }
 
-export type User = {
-  userName: string;
-  id: string;
-  socketID: string;
-};
-
 const Chat = (props: ChatProps) => {
-  const [users, setUsers] = useState<User[]>([]);
-
-  console.log(users);
+  const { users, setUsers } = useUserContext();
 
   useEffect(() => {
     props.socket.on('newUserResponse', (data) => setUsers(data));
-  }, [props.socket, users]);
+  }, [props.socket, users, setUsers]);
 
   return (
     <Layout>

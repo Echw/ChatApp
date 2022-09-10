@@ -4,6 +4,7 @@ import AddMessage from '../components/AddMessage';
 import IncomingMessage from '../components/IncomingMessage';
 import OutgoingMessage from '../components/OutgoingMessage';
 import { Socket } from 'socket.io-client';
+import { useUserContext } from '../contexts/UserContext';
 
 interface ChatSectionProps {
   socket: Socket;
@@ -19,10 +20,10 @@ export type Message = {
 
 const ChatSection = (props: ChatSectionProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
+  const { users } = useUserContext();
 
   useEffect(() => {
     props.socket.on('messageResponse', (data) => {
-      console.log(data);
       setMessages([...messages, data]);
     });
   }, [props.socket, messages]);
@@ -40,11 +41,13 @@ const ChatSection = (props: ChatSectionProps) => {
         {messages.map((message) =>
           message.name === localStorage.getItem('userName') ? (
             <OutgoingMessage
+              user={users.find((user) => user.socketID === message.socketID)!}
               key={message.id}
               message={message}
             ></OutgoingMessage>
           ) : (
             <IncomingMessage
+              user={users.find((user) => user.socketID === message.socketID)!}
               key={message.id}
               message={message}
             ></IncomingMessage>

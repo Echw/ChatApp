@@ -27,6 +27,7 @@ const AddMessage = (props: AddMessageProps) => {
       });
     }
     setMessage('');
+    // setShowEmoji(false)
   };
 
   const onEmojiClick = (event: any, emojiObject: IEmojiData) => {
@@ -37,9 +38,9 @@ const AddMessage = (props: AddMessageProps) => {
 
   return (
     <NewMessageSection onSubmit={handleSendMessage}>
-      <button onClick={showEmojiOnClick}>
+      <div onClick={showEmojiOnClick}>
         <BsFillEmojiSmileFill />
-      </button>
+      </div>
       {showEmoji && <Emoji onEmojiClick={onEmojiClick} />}
       <input
         type="text"
@@ -63,7 +64,8 @@ const NewMessageSection = styled.form`
   padding: 1rem;
   z-index: 1000;
 
-  button {
+  button,
+  div {
     font-size: 2rem;
     background-color: transparent;
     border: none;

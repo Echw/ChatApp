@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Avatar } from '../types/Avatar';
+import { User } from '../types/User';
 
 const UserContext = createContext({
   get userName(): string {
@@ -10,6 +11,10 @@ const UserContext = createContext({
     throw new Error('UserContext not defined');
   },
   setDefaultAvatar: (avatar: Avatar) => {},
+  get users(): User[] {
+    throw new Error('UserContext not defined');
+  },
+  setUsers: (users: User[]) => {},
 });
 
 interface ProviderProps {
@@ -29,10 +34,18 @@ export const UserContextProvider = (props: ProviderProps) => {
     mouth: 'serious',
     skinTone: 'light',
   });
+  const [users, setUsers] = useState<User[]>([]);
 
   return (
     <UserContext.Provider
-      value={{ userName, setUserName, defaultAvatar, setDefaultAvatar }}
+      value={{
+        userName,
+        setUserName,
+        defaultAvatar,
+        setDefaultAvatar,
+        users,
+        setUsers,
+      }}
     >
       {props.children}
     </UserContext.Provider>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BigHead } from '@bigheads/core';
-import { User } from '../pages/Chat';
+import { User } from '../types/User';
+import UserAvatar from './UserAvatar';
 
 interface OneFriendProps {
   user: User;
@@ -10,7 +10,7 @@ interface OneFriendProps {
 const OneFriendOnList = (props: OneFriendProps) => {
   return (
     <Wrapper>
-      <BigHead />
+      <UserAvatarDiv avatar={props.user.avatar} />
       <h3>{props.user.userName}</h3>
     </Wrapper>
   );
@@ -21,11 +21,9 @@ export default OneFriendOnList;
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   padding: 1rem;
-  gap: 1.5rem;
   overflow: hidden;
-  padding-left: 2rem;
+
   :hover {
     cursor: pointer;
     background-color: #1f2b2c;
@@ -42,4 +40,8 @@ const Wrapper = styled.div`
     font-weight: 400;
     margin: 0;
   }
+`;
+
+const UserAvatarDiv = styled(UserAvatar)`
+  width: auto;
 `;
