@@ -46,7 +46,8 @@ const Home = (props: HomeProps) => {
           <Form onSubmit={handleSubmit}>
             <input
               type="text"
-              minLength={6}
+              minLength={3}
+              maxLength={8}
               name="username"
               id="username"
               placeholder="Username"
@@ -54,7 +55,9 @@ const Home = (props: HomeProps) => {
               onChange={(event) => setUserName(event.target.value)}
             />
             <Button>
-              <StyledLink>Sign in</StyledLink>
+              <StyledLink disabled={userName.trim().length < 3}>
+                Sign in
+              </StyledLink>
             </Button>
           </Form>
         </JoinWrapper>
