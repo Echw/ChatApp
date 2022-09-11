@@ -1,0 +1,22 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "This is a simple chat app with avatar creator ",
+  "scripts": {
+    "install": "concurrently \"cd client && npm install\" \"cd server && npm install\"",
+    "start": "concurrently \"cd client && npm start\" \"cd server && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Echw/ChatApp.git"
+  },
+  "author": "Echw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Echw/ChatApp/issues"
+  },
+  "homepage": "https://github.com/Echw/ChatApp#readme",
+  "dependencies": {
+    "concurrently": "^7.4.0"
+  }
+}
