@@ -13,11 +13,7 @@ const Sidebar = () => {
     <Wrapper>
       <ProfileImgWrapper>
         <UserAvatar avatar={defaultAvatar}></UserAvatar>
-        <SidebarIcons>
-          <StyledLink to="/chat">
-            <BsChatDotsFill />
-          </StyledLink>
-        </SidebarIcons>
+        <SidebarIcons></SidebarIcons>
       </ProfileImgWrapper>
       <StyledLink to="/goodbye">
         <RiLogoutBoxRFill />
@@ -62,7 +58,7 @@ const ProfileImgWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 7rem;
 `;
 
 const SidebarIcons = styled.div`
