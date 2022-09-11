@@ -1,11 +1,4 @@
-
 # Chat App
-
-
-## Live-Preview
-
-
-
 
 
 ## How to run it locally?
