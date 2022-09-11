@@ -6,7 +6,7 @@
 Clone the project
 
 ```bash
-  git clonehttps://github.com/Echw/ChatApp.git
+  git clone https://github.com/Echw/ChatApp.git
 ```
 
 Go to the project directory
@@ -21,15 +21,17 @@ Install dependencies
   npm install
 ```
 
-Start the server
+Start concurrently react application and server
 
 ```bash
-  npm run start
+  npm start
 ```
     
 ## Tech Stack
 
-**Client:** React, TypeScript, Styled-components
+**Client:** React, TypeScript, Styled-components, Socket.IO, BigHeads.IO
+**Server:** Node.JS, Express, TypeScript, Socket.IO, 
+
 
 
 
